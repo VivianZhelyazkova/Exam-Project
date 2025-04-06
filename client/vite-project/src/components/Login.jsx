@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router";
+
 export default function Login() {
+    const navigate = useNavigate()
     async function onSubmit(formData) {
         const { email, password } = Object.fromEntries(formData);
         const data = await fetch("http://localhost:3030/users/login", {
@@ -9,6 +12,7 @@ export default function Login() {
 
         const result = await data.json();
         localStorage.setItem("accessToken", result.accessToken);
+        navigate("/")
     }
 
     return (

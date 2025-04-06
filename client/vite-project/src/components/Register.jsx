@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router";
 export default function Register() {
+    const navigate = useNavigate()
     async function onSubmit(formData) {
         const { email, password } = Object.fromEntries(formData);
         const response = await fetch("http://localhost:3030/users/register", {
@@ -7,7 +9,8 @@ export default function Register() {
             body: JSON.stringify({ email, password }),
         });
         const result = await response.json();
-        localStorage.setItem("accessToken",result.accessToken)
+        localStorage.setItem("accessToken", result.accessToken);
+        navigate("/")
     }
 
     return (

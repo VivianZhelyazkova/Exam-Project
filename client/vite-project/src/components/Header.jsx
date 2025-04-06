@@ -1,11 +1,11 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 export default function Header() {
     return (
         <>
-            <Link to="/">Home</Link>
-            <Link to="/catalog">Catalog</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/">Home</NavLink>
+            <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/catalog">Catalog</NavLink>
+            <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/login">Login</NavLink>
+            <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/register">Register</NavLink>
             
         </>
     );
