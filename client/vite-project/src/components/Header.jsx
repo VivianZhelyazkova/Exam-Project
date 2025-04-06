@@ -1,16 +1,29 @@
 import { NavLink } from "react-router";
 export default function Header() {
+    const navLinks = [
+        { path: "/", name: "Home" },
+        { path: "/catalog", name: "Catalog" },
+        { path: "/aboutus", name: "About us" },
+        { path: "/contact", name: "Contact us" },
+        { path: "/login", name: "Login" },
+        { path: "/register", name: "Register" },
+    ];
+
     return (
         <>
             <div className="header-container">
                 <div className="logo">LOGO</div>
                 <div className="nav-container">
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/">Home</NavLink>
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/catalog">Catalog</NavLink>
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/login">Login</NavLink>
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/register">Register</NavLink>
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/aboutus">About Us</NavLink>
-                    <NavLink className={({isActive})=>isActive ? "active-link": "link"} to="/contact">Contact</NavLink>
+                    {navLinks.map((item) => (
+                        <NavLink
+                            className={({ isActive }) =>
+                                isActive ? "active-link" : "link"
+                            }
+                            to={item.path}
+                        >
+                            {item.name}
+                        </NavLink>
+                    ))}
                 </div>
             </div>
         </>
