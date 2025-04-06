@@ -1,29 +1,29 @@
-export default function Login() {
+export default function Register() {
     async function onSubmit(formData) {
         const { email, password } = Object.fromEntries(formData);
-        const data = await fetch("http://localhost:3030/users/login", {
+        const response = await fetch("http://localhost:3030/users/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
         });
-
-        const result = await data.json();
-        localStorage.setItem("accessToken", result.accessToken);
+        const result = await response.json();
+        localStorage.setItem("accessToken",result.accessToken)
     }
 
     return (
         <>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form
                 action={onSubmit}
                 style={{ display: "flex", flexDirection: "column" }}
             >
                 <label htmlFor="email">Email</label>
                 <input type="text" name="email" />
-
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" />
-                <input type="submit" name="login" value="Login" />
+                <label htmlFor="rePassword">Repeat Password</label>
+                <input type="password" name="rePassword" />
+                <input type="submit" value="Register" />
             </form>
         </>
     );
