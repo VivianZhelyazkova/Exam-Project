@@ -1,17 +1,30 @@
 export default function Login() {
-   return (
-     <>
-     <h1>Login</h1>
-     <form style={{display:"flex", flexDirection:"column"}}>
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username"/>
+    async function onSubmit(formData) {
+        const { email, password } = Object.fromEntries(formData);
+        const data = await fetch("http://localhost:3030/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
 
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password"/>
+        const result = await data.json();
+        localStorage.setItem("accesstoken", result.accessToken);
+    }
 
-        <input type="submit" name="login" value="Login" />
+    return (
+        <>
+            <h1>Login</h1>
+            <form
+                action={onSubmit}
+                style={{ display: "flex", flexDirection: "column" }}
+            >
+                <label htmlFor="email">Username</label>
+                <input type="text" name="email" />
 
-     </form>
-     </>
-   );
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" />
+                <input type="submit" name="login" value="Login" />
+            </form>
+        </>
+    );
 }
