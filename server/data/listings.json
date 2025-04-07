@@ -1,0 +1,19 @@
+{
+    "16556940-95f1-43dc-9ad1-34affe32eb54": {
+      "_id": "16556940-95f1-43dc-9ad1-34affe32eb54",
+      "name": "Grave Hag",
+      "image": "https://static.wikia.nocookie.net/witcher/images/d/d0/Tw3_journal_gravehag.png/revision/latest?cb=20160502093748",
+      "powers": "Dark vision, Burrowing, Necrotic screech",
+      "weaknesses": "Moon Dust, Necrophage Oil, Yrden Sign",
+      "author": "Kael of Kaer Morhen"
+    },
+    "dd143899-b484-4f87-8b70-c78607b72d88": {
+      "_id": "dd143899-b484-4f87-8b70-c78607b72d88",
+      "name": "Leshy",
+      "image": "https://static.wikia.nocookie.net/witcher/images/3/39/Tw3_journal_leshen.png/revision/latest?cb=20160511131517",
+      "powers": "Regeneration, Camouflage, Wolf Summon",
+      "weaknesses": "Dimeritium Bomb, Relict Oil, Igni Sign",
+      "author": "Verin the Silent"
+    }
+  }
+  
