@@ -2,6 +2,9 @@ import { NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import logo from "../assets/logo.png"
+
+
 export default function Header() {
     const { email, isAuthenticated } = useAuth();
     const {userLogoutHandler} = useContext(UserContext)
@@ -13,7 +16,7 @@ export default function Header() {
     return (
         <>
             <div className="header-container">
-                <div className="logo">LOGO</div>
+                <img className="logo" src={logo}></img>
                 <div className="nav-container">
                     <NavLink className={isActiveClassName} to="/">
                         Home
