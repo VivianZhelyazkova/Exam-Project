@@ -1,15 +1,15 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../contexts/UserContext";
+import { useRegister } from "../api/authApi";
 export default function Register() {
     const navigate = useNavigate();
+    const { userLoginHandler } = useContext(UserContext);
+    const {register} = useRegister()
     async function onSubmit(formData) {
         const { email, password } = Object.fromEntries(formData);
-        const response = await fetch("http://localhost:3030/users/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        });
-        const result = await response.json();
-        localStorage.setItem("accessToken", result.accessToken);
+        const data = await register(email, password)
+        userLoginHandler(data);
         navigate("/");
     }
 
