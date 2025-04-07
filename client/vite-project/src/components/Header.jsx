@@ -1,29 +1,52 @@
 import { NavLink } from "react-router";
+import useAuth from "../hooks/useAuth";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 export default function Header() {
-    const navLinks = [
-        { path: "/", name: "Home" },
-        { path: "/catalog", name: "Catalog" },
-        { path: "/aboutus", name: "About us" },
-        { path: "/contact", name: "Contact us" },
-        { path: "/login", name: "Login" },
-        { path: "/register", name: "Register" },
-    ];
+    const { email, isAuthenticated } = useAuth();
+    const {userLogoutHandler} = useContext(UserContext)
+
+    function isActiveClassName({ isActive }) {
+        return isActive ? "active-link" : "link";
+    }
 
     return (
         <>
             <div className="header-container">
                 <div className="logo">LOGO</div>
                 <div className="nav-container">
-                    {navLinks.map((item) => (
-                        <NavLink
-                            className={({ isActive }) =>
-                                isActive ? "active-link" : "link"
-                            }
-                            to={item.path}
-                        >
-                            {item.name}
-                        </NavLink>
-                    ))}
+                    <NavLink className={isActiveClassName} to="/">
+                        Home
+                    </NavLink>
+                    <NavLink className={isActiveClassName} to="/catalog">
+                        Catalog
+                    </NavLink>
+                    <NavLink className={isActiveClassName} to="/aboutus">
+                        About Us
+                    </NavLink>
+                    <NavLink className={isActiveClassName} to="/contact">
+                        Contact
+                    </NavLink>
+                    {isAuthenticated ? (
+                        <>
+                            <NavLink className={isActiveClassName}>
+                                {email}
+                            </NavLink>
+                            <NavLink onClick={userLogoutHandler}> Logout </NavLink>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink className={isActiveClassName} to="/login">
+                                Login
+                            </NavLink>
+                            <NavLink
+                                className={isActiveClassName}
+                                to="/register"
+                            >
+                                Register
+                            </NavLink>
+                        </>
+                    )}
                 </div>
             </div>
         </>
