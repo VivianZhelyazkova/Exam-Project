@@ -9,26 +9,15 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
-import amulet from "./assets/homeBackground.png"
+import MonsterDetails from "./components/MonsterDetails";
+
 
 
 function App() {
-    const location = useLocation()
-    const [backgroundClassName, setbackgroundClassName] = useState({})
-    useEffect(()=>{
-        if (location.pathname === "/"){
-            setbackgroundClassName(
-                {backgroundImage:`url(${amulet})`,
-                
-            })
-        }else{
-            setbackgroundClassName({})
-        }
-    },[location.pathname])
-    
+   
     return (
         <UserProvider>
-            <div className="main-container" style={backgroundClassName} >
+            <div className="main-container"  >
                 <Header />
                 <div className="routes-container">
                     <Routes>
@@ -38,6 +27,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/aboutus" element={<AboutUs/>} />
                         <Route path="/contact" element={<Contact/>} />
+                        <Route path="/monster/:id" element={<MonsterDetails/>} />
                     </Routes>
                 </div>
             </div>
