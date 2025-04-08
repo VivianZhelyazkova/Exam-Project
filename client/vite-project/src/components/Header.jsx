@@ -2,12 +2,11 @@ import { NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import logo from "../assets/logo.png"
-
+import logo from "../assets/logo.png";
 
 export default function Header() {
     const { email, isAuthenticated } = useAuth();
-    const {userLogoutHandler} = useContext(UserContext)
+    const { userLogoutHandler } = useContext(UserContext);
 
     function isActiveClassName({ isActive }) {
         return isActive ? "active-link" : "link";
@@ -21,8 +20,8 @@ export default function Header() {
                     <NavLink className={isActiveClassName} to="/">
                         Home
                     </NavLink>
-                    <NavLink className={isActiveClassName} to="/catalog">
-                        Catalog
+                    <NavLink className={isActiveClassName} to="/monsters">
+                        Monsters
                     </NavLink>
                     <NavLink className={isActiveClassName} to="/aboutus">
                         About Us
@@ -35,7 +34,10 @@ export default function Header() {
                             <NavLink className={isActiveClassName}>
                                 {email}
                             </NavLink>
-                            <NavLink onClick={userLogoutHandler}> Logout </NavLink>
+                            <NavLink onClick={userLogoutHandler}>
+                                {" "}
+                                Logout{" "}
+                            </NavLink>
                         </>
                     ) : (
                         <>
@@ -51,6 +53,7 @@ export default function Header() {
                         </>
                     )}
                 </div>
+                {isAuthenticated && <button className="button add-monster-button">Add Monster</button>}
             </div>
         </>
     );

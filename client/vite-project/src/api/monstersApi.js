@@ -20,3 +20,4 @@ export function useFetchMonsterDetails(id){
     },[])
     return {monsterDetails}
 }
+

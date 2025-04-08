@@ -6,7 +6,7 @@ export default function Catalog() {
 
     return (
         <>
-            <h1>Catalog</h1>
+            <h1>Monsters</h1>
             <div className="monsters-catalog">
                 {monsters.map((monster) => (
                     <Monster {...monster} key={monster._id} />
