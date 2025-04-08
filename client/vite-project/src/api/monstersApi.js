@@ -28,3 +28,11 @@ export function usePostMonster() {
     }
     return { postMonster };
 }
+
+export function useDeleteMonster() {
+    const { request } = useAuth();
+    function deleteMonster(id) {
+        return request.delete(`${baseUrl}/${id}`);
+    }
+    return { deleteMonster };
+}

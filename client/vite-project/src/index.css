@@ -15,14 +15,14 @@
     background: -webkit-radial-gradient(
         circle,
         rgb(0, 0, 0) 0%,
-        rgb(64, 64, 64) 0%,
+        rgb(35, 35, 35) 0%,
         rgb(12, 12, 12) 100%
     );
     background: radial-gradient(
         circle,
-        rgb(0, 0, 0) 0%,
-        rgb(35, 35, 35) 0%,
-        rgb(0, 0, 0) 100%
+        rgb(14, 14, 14) 0%,
+        rgb(32, 30, 30) 0%,
+        rgb(9, 9, 9) 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#121212",endColorstr="#0f0f0f",GradientType=1);
 

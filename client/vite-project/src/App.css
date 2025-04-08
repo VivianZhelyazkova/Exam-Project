@@ -43,6 +43,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
@@ -183,14 +186,14 @@ textarea {
     background: -webkit-radial-gradient(
         circle,
         rgba(18, 18, 18, 1) 0%,
-        rgba(54, 54, 54, 1) 0%,
+        rgb(40, 40, 40) 0%,
         rgba(15, 15, 15, 1) 100%
     );
     background: radial-gradient(
         circle,
         rgba(18, 18, 18, 1) 0%,
-        rgba(54, 54, 54, 1) 0%,
-        rgba(15, 15, 15, 1) 100%
+        rgb(40, 40, 40) 0%,
+        rgb(21, 21, 21) 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#121212",endColorstr="#0f0f0f",GradientType=1);
 }
@@ -234,4 +237,39 @@ label {
     width: 100%;
     justify-content: space-evenly;
     margin-top: 30px;
+}
+
+.modal {
+    padding: 20px;
+    background-color: #151414;
+
+    height: 140px;
+    width: 500px;
+    border-radius: 25px;
+    z-index: 11;
+    border: 3px solid rgb(201 159 48 / 55%);
+}
+
+.modal-backdrop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    backdrop-filter: blur(2px);
+}
+
+.modal-delete-button {
+    color: #9c0b0b;
+}
+
+.modal-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 28px;
 }
