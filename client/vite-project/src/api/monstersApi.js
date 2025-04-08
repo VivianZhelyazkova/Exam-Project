@@ -1,23 +1,30 @@
 import { useEffect, useState } from "react";
 import request from "../utils/request";
+import useAuth from "../hooks/useAuth";
 
 const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/data/listings`;
-
 
 export function useFetchMonsters() {
     const [monsters, setMonsters] = useState([]);
     useEffect(() => {
-        request.get(baseUrl).then(setMonsters)
+        request.get(baseUrl).then(setMonsters);
     }, []);
 
-    return {monsters}
+    return { monsters };
 }
 
-export function useFetchMonsterDetails(id){
-    const [monsterDetails,setMonsterDetails] = useState({})
-    useEffect(()=>{
-        request.get(`${baseUrl}/${id}`).then(setMonsterDetails)
-    },[])
-    return {monsterDetails}
+export function useFetchMonsterDetails(id) {
+    const [monsterDetails, setMonsterDetails] = useState({});
+    useEffect(() => {
+        request.get(`${baseUrl}/${id}`).then(setMonsterDetails);
+    }, []);
+    return { monsterDetails };
 }
 
+export function usePostMonster() {
+    const { request } = useAuth();
+    function postMonster(monsterData) {
+        return request.post(baseUrl, monsterData);
+    }
+    return { postMonster };
+}

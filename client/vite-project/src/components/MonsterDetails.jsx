@@ -33,7 +33,12 @@ export default function MonsterDetails() {
                         <p className="details-heading">Author:</p>
                     </div>
                     <p> {monsterDetails.author}</p>
+                    <div className="monster-button-container">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
                 </div>
+
             </div>
         </>
     );

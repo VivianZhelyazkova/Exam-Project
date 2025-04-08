@@ -5,23 +5,23 @@ import { UserContext } from "../contexts/UserContext";
 
 const baseUrl = `${import.meta.env.VITE_APP_SERVER_URL}/users`;
 
-export const useLogin = () => {
+export function useLogin() {
     const login = async (email, password) =>
         request.post(`${baseUrl}/login`, { email, password });
 
     return {
         login,
     };
-};
+}
 
-export const useRegister = () => {
+export function useRegister() {
     const register = (email, password, name) =>
         request.post(`${baseUrl}/register`, { email, password, name });
 
     return {
         register,
     };
-};
+}
 
 export const useLogout = () => {
     const { accessToken, userLogoutHandler } = useContext(UserContext);

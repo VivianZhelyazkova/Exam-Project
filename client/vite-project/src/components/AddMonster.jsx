@@ -1,8 +1,20 @@
+import { useNavigate } from "react-router";
+import { usePostMonster } from "../api/monstersApi";
+import useAuth from "../hooks/useAuth";
+
 export default function AddMonster() {
+    const navigate = useNavigate()
+    const {postMonster} = usePostMonster()
+    const {name} = useAuth()
+    async function onSubmitAddMonster(formData) {
+        const monster = Object.fromEntries(formData)
+        await postMonster({...monster, author:name})
+        navigate("/monsters")
+    }
     return (
         <>
             <h1>Add Monster</h1>
-            <form className={"column form-card"} action="">
+            <form className={"column form-card"} action={onSubmitAddMonster}>
                 <div className="form-row-container">
                     <div className="form-row-left-container">
                         <div className="form-heading-line"></div>
@@ -31,7 +43,9 @@ export default function AddMonster() {
                     </div>
                     <textarea className="form-input" name="weaknesses" />
                 </div>
-                <button  className="form-button" type="submit">CREATE</button>
+                <button className="form-button" type="submit">
+                    CREATE
+                </button>
             </form>
         </>
     );
