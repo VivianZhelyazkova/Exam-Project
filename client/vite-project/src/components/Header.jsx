@@ -1,17 +1,21 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import logo from "../assets/logo.png";
 
 export default function Header() {
-    const { email, isAuthenticated } = useAuth();
+    const { name, isAuthenticated } = useAuth();
     const { userLogoutHandler } = useContext(UserContext);
+    const navigate = useNavigate()
 
     function isActiveClassName({ isActive }) {
         return isActive ? "active-link" : "link";
     }
 
+    function addMonsterClickHandler(){
+        navigate("/addmonster")
+    }
     return (
         <>
             <div className="header-container">
@@ -32,7 +36,7 @@ export default function Header() {
                     {isAuthenticated ? (
                         <>
                             <NavLink className={isActiveClassName}>
-                                {email}
+                                Profile
                             </NavLink>
                             <NavLink onClick={userLogoutHandler}>
                                 {" "}
@@ -53,7 +57,7 @@ export default function Header() {
                         </>
                     )}
                 </div>
-                {isAuthenticated && <button className="button add-monster-button">Add Monster</button>}
+                {isAuthenticated && <button onClick={addMonsterClickHandler} className="button add-monster-button">Add Monster</button>}
             </div>
         </>
     );

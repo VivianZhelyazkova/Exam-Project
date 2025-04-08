@@ -10,6 +10,7 @@ import Register from "./components/Register";
 import AboutUs from "./components/AboutUs";
 import Contact from "./components/Contact";
 import MonsterDetails from "./components/MonsterDetails";
+import AddMonster from "./components/AddMonster";
 
 
 
@@ -28,6 +29,8 @@ function App() {
                         <Route path="/aboutus" element={<AboutUs/>} />
                         <Route path="/contact" element={<Contact/>} />
                         <Route path="/monster/:id" element={<MonsterDetails/>} />
+                        <Route path="/addmonster" element={<AddMonster/>} />
+
                     </Routes>
                 </div>
             </div>

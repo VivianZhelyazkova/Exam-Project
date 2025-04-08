@@ -5,10 +5,10 @@ import { useRegister } from "../api/authApi";
 export default function Register() {
     const navigate = useNavigate();
     const { userLoginHandler } = useContext(UserContext);
-    const {register} = useRegister()
+    const { register } = useRegister();
     async function onSubmit(formData) {
-        const { email, password } = Object.fromEntries(formData);
-        const data = await register(email, password)
+        const { email, password, name } = Object.fromEntries(formData);
+        const data = await register(email, password, name);
         userLoginHandler(data);
         navigate("/");
     }
@@ -19,6 +19,8 @@ export default function Register() {
             <form action={onSubmit} className="column">
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" />
+                <label htmlFor="name">Name</label>
+                <input type="text" name="name" />
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" />
                 <label htmlFor="rePassword">Repeat Password</label>
