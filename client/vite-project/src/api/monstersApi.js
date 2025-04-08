@@ -12,3 +12,11 @@ export function useFetchMonsters() {
 
     return {monsters}
 }
+
+export function useFetchMonsterDetails(id){
+    const [monsterDetails,setMonsterDetails] = useState({})
+    useEffect(()=>{
+        request.get(`${baseUrl}/${id}`).then(setMonsterDetails)
+    },[])
+    return {monsterDetails}
+}

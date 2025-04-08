@@ -8,13 +8,11 @@ export default function Monster({
     weaknesses,
     powers,
 }) {
-    const navigate = useNavigate()
-    function monsterDetailsClickHandler(){
-        console.log("Gdg");
-        
-        navigate(`/monster/${_id}`)
+    const navigate = useNavigate();
+    function monsterDetailsClickHandler() {
+        navigate(`/monster/${_id}`);
     }
-    
+
     return (
         <div className="monster-card" onClick={monsterDetailsClickHandler}>
             <img
@@ -26,7 +24,7 @@ export default function Monster({
                 alt={name}
             />
             <p className="monster-card-name">{name}</p>
-            
+
             <p className="monster-card-author">{author}</p>
         </div>
     );
