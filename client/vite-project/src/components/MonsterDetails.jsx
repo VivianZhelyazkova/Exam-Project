@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router";
 import { useDeleteMonster, useFetchMonsterDetails } from "../api/monstersApi";
-import ConfirmationModal from "./ConfirmationModal";
+import ConfirmationModal from "./modals/ConfirmationModal";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 

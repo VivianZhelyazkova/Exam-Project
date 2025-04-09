@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import { UserContext } from "../contexts/UserContext";
 import { useRegister } from "../api/authApi";
 
-import ErrorModal from "./ErrorModal";
+import ErrorModal from "./modals/ErrorModal";
+import FormWrapper from "./FormWrapper";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Register() {
         try {
             if (password !== rePassword) {
                 setErrorMessage("Passwords don't match!");
-                return
+                return;
             }
             const data = await register(email, password, name);
             userLoginHandler(data);
@@ -38,41 +39,51 @@ export default function Register() {
                 />
             )}
             <h1>Register</h1>
-            <form action={onSubmit} className={"column form-card"}>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="email">Email</label>
+            <FormWrapper>
+                <form action={onSubmit} className={"column form-card"}>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <input
+                            className="form-input"
+                            type="email"
+                            name="email"
+                        />
                     </div>
-                    <input className="form-input" type="email" name="email" />
-                </div>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="password">Password</label>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="password">Password</label>
+                        </div>
+                        <input
+                            className="form-input"
+                            type="password"
+                            name="password"
+                        />
                     </div>
-                    <input
-                        className="form-input"
-                        type="password"
-                        name="password"
-                    />
-                </div>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="rePassword">Re-Password</label>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="rePassword">Re-Password</label>
+                        </div>
+                        <input
+                            className="form-input"
+                            type="password"
+                            name="rePassword"
+                        />
                     </div>
-                    <input
-                        className="form-input"
-                        type="password"
-                        name="rePassword"
-                    />
-                </div>
 
-                <button className="form-button" type="submit" name="register">
-                    Register
-                </button>
-            </form>
+                    <button
+                        className="form-button"
+                        type="submit"
+                        name="register"
+                    >
+                        Register
+                    </button>
+                </form>
+            </FormWrapper>
         </>
     );
 }

@@ -2,7 +2,8 @@ import { useNavigate } from "react-router";
 import { usePostMonster } from "../api/monstersApi";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
-import ErrorModal from "./ErrorModal";
+import ErrorModal from "./modals/ErrorModal";
+import FormWrapper from "./FormWrapper";
 
 export default function AddMonster() {
     const navigate = useNavigate();
@@ -13,9 +14,14 @@ export default function AddMonster() {
     async function onSubmitAddMonster(formData) {
         const monster = Object.fromEntries(formData);
 
-        if(!monster.name || !monster.powers || !monster.weaknesses || !monster.image){
-            setErrorMessage("All fields are required!")
-            return
+        if (
+            !monster.name ||
+            !monster.powers ||
+            !monster.weaknesses ||
+            !monster.image
+        ) {
+            setErrorMessage("All fields are required!");
+            return;
         }
 
         try {
@@ -36,39 +42,48 @@ export default function AddMonster() {
                 />
             )}
             <h1>Add Monster</h1>
-            <form className={"column form-card"} action={onSubmitAddMonster}>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="image">Photo</label>
+            <FormWrapper>
+                <form
+                    className={"column form-card"}
+                    action={onSubmitAddMonster}
+                >
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="image">Photo</label>
+                        </div>
+                        <input
+                            className="form-input"
+                            type="text"
+                            name="image"
+                        />
                     </div>
-                    <input className="form-input" type="text" name="image" />
-                </div>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="name">Name</label>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="name">Name</label>
+                        </div>
+                        <input className="form-input" type="text" name="name" />
                     </div>
-                    <input className="form-input" type="text" name="name" />
-                </div>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="powers">Powers</label>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="powers">Powers</label>
+                        </div>
+                        <textarea className="form-input" name="powers" />
                     </div>
-                    <textarea className="form-input" name="powers" />
-                </div>
-                <div className="form-row-container">
-                    <div className="form-row-left-container">
-                        <div className="form-heading-line"></div>
-                        <label htmlFor="weaknesses">Weaknesses</label>
+                    <div className="form-row-container">
+                        <div className="form-row-left-container">
+                            <div className="form-heading-line"></div>
+                            <label htmlFor="weaknesses">Weaknesses</label>
+                        </div>
+                        <textarea className="form-input" name="weaknesses" />
                     </div>
-                    <textarea className="form-input" name="weaknesses" />
-                </div>
-                <button className="form-button" type="submit">
-                    CREATE
-                </button>
-            </form>
+                    <button className="form-button" type="submit">
+                        CREATE
+                    </button>
+                </form>
+            </FormWrapper>
         </>
     );
 }

@@ -64,6 +64,8 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 40px;
+    overflow-y: hidden;
+    min-height:600px;
 }
 
 .column {
@@ -208,11 +210,11 @@ textarea {
 .form-row-container {
     display: flex;
     margin-bottom: 45px;
-    
 }
 
 label {
     font-size: 23px;
+    color: #c6ad30;
 }
 
 .form-row-left-container {
@@ -292,4 +294,25 @@ label {
 
 .contact-message {
     height: 150px;
+}
+
+.form-left-image {
+    position: absolute;
+    width: 450px;
+    transform: translate(-70%) rotate(-60deg);
+    left: 0;
+    z-index: -1;
+}
+
+.form-right-image {
+    position: absolute;
+    width: 450px;
+    transform: translate(70%) scaleX(-1) rotate(-60deg);
+    right: 0;
+    z-index: -1;
+}
+
+.form-wrapper {
+    position: relative;
+    width: 860px;
 }
