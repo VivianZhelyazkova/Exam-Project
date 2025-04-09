@@ -2,14 +2,14 @@ import { useNavigate, useParams } from "react-router";
 import { useDeleteMonster, useFetchMonsterDetails } from "../api/monstersApi";
 import ConfirmationModal from "./ConfirmationModal";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 export default function MonsterDetails() {
     const { id } = useParams();
     const { monsterDetails } = useFetchMonsterDetails(id);
     const { deleteMonster } = useDeleteMonster();
     const navigate = useNavigate();
-    const img =
-        "https://cdn.discordapp.com/attachments/343810753976991744/1358896104028241990/ChatGPT_Image_Apr_3_2025_02_56_58_AM.png?ex=67f5821e&is=67f4309e&hm=08656e7694566230bd5eac9400929f2a332a1daf9a35c6fb4e70c2e103c0ae82&";
+    const {userId} = useAuth()
 
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     function deleteMonsterClickHandler() {
@@ -17,12 +17,13 @@ export default function MonsterDetails() {
     }
     async function onClickDeleteMonster() {
         await deleteMonster(id);
-        setDeleteModalOpen(false)
+        setDeleteModalOpen(false);
         navigate("/monsters");
     }
 
     return (
         <>
+        
             {deleteModalOpen && (
                 <ConfirmationModal
                     onDelete={onClickDeleteMonster}
@@ -33,7 +34,7 @@ export default function MonsterDetails() {
             <div className="monster-details-container">
                 <img
                     className="monster-details-image"
-                    src={img}
+                    src={monsterDetails.image}
                     alt={monsterDetails.name}
                 />
 
@@ -53,12 +54,13 @@ export default function MonsterDetails() {
                         <p className="details-heading">Author:</p>
                     </div>
                     <p> {monsterDetails.author}</p>
+                    { userId === monsterDetails.authorId &&
                     <div className="monster-button-container">
-                        <button>Edit</button>
+                        <button >Edit </button>
                         <button onClick={deleteMonsterClickHandler}>
                             Delete
                         </button>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </>

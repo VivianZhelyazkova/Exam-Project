@@ -4,7 +4,7 @@ export default function Home() {
    return (
      <div  className={"home-background-amulet"} style={{backgroundImage:`url(${amulet})`}}>
      {/* <h1>Home</h1> */}
-     <img src={name} alt="" />
+     <img src={name} alt="" className="home-name-image" />
      </div>
    );
 }
