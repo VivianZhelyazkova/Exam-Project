@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { useFetchMonsterDetails, usePutMonster } from "../api/monstersApi";
 import { useEffect, useState } from "react";
+import ErrorModal from "./ErrorModal";
 
 export default function EditMonster() {
     const { id } = useParams();
@@ -8,14 +9,28 @@ export default function EditMonster() {
     const { putMonster } = usePutMonster();
     const navigate = useNavigate();
     const [monster, setMonster] = useState({});
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         setMonster(monsterDetails);
     }, [monsterDetails]);
 
     async function onSubmitEditMonster() {
-        await putMonster(id, monster);
-        navigate(`/monster/${id}`);
+        if (
+            !monster.name ||
+            !monster.powers ||
+            !monster.weaknesses ||
+            !monster.image
+        ) {
+            setErrorMessage("All fields are required!");
+            return;
+        }
+        try {
+            await putMonster(id, monster);
+            navigate(`/monster/${id}`);
+        } catch (err) {
+            setErrorMessage(err.message);
+        }
     }
 
     function onChangeHandler(value, propName) {
@@ -26,6 +41,14 @@ export default function EditMonster() {
 
     return (
         <>
+            {errorMessage && (
+                <ErrorModal
+                    message={errorMessage}
+                    onClose={() => {
+                        setErrorMessage("");
+                    }}
+                />
+            )}
             <h1>Edit Monster</h1>
             <form className={"column form-card"} action={onSubmitEditMonster}>
                 <div className="form-row-container">
