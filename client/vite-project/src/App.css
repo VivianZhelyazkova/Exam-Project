@@ -34,7 +34,7 @@
     flex-direction: row;
     position: relative;
     overflow: hidden;
-    height: 60px;
+    height: 80px;
     width: 100dvw;
 }
 
@@ -52,7 +52,8 @@
     position: absolute;
     left: 3%;
     top: 20%;
-    width: 40px;
+    width: 70px;
+    cursor: pointer;
 }
 
 .routes-container {
