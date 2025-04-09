@@ -279,3 +279,7 @@ label {
     filter: drop-shadow(2px 4px 6px black);
     opacity: 0.9;
 }
+
+.about-us-h3 {
+    color:#c6ad30; 
+}

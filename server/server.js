@@ -1858,7 +1858,7 @@
                 powers: "Dark vision, Burrowing, Necrotic screech",
                 weaknesses: "Moon Dust, Necrophage Oil, Yrden Sign",
                 author: "Kael of Kaer Morhen",
-                authorId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
             },
             "dd143899-b484-4f87-8b70-c78607b72d88": {
                 _id: "dd143899-b484-4f87-8b70-c78607b72d88",
@@ -1867,7 +1867,7 @@
                 powers: "Regeneration, Camouflage, Wolf Summon",
                 weaknesses: "Dimeritium Bomb, Relict Oil, Igni Sign",
                 author: "Verin the Silent",
-                authorId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
             },
         },
     };

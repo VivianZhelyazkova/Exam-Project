@@ -36,3 +36,11 @@ export function useDeleteMonster() {
     }
     return { deleteMonster };
 }
+
+export function usePutMonster() {
+    const { request } = useAuth();
+    function putMonster(id, monsterData) {
+        return request.put(`${baseUrl}/${id}`, monsterData);
+    }
+    return { putMonster };
+}

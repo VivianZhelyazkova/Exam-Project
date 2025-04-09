@@ -15,6 +15,7 @@ import AuthenticatedGuards from "./routeguards/AuthenticatedGuard";
 import AuthenticatedGuard from "./routeguards/AuthenticatedGuard";
 import GuestGuard from "./routeguards/GuestGuard";
 import NotFound from "./components/NotFound";
+import EditMonster from "./components/EditMonster";
 
 function App() {
     return (
@@ -40,6 +41,7 @@ function App() {
                                 path="/addmonster"
                                 element={<AddMonster />}
                             />
+                            <Route path="/editmonster/:id" element={<EditMonster/>}/>
                         </Route>
                         <Route path="*" element={<NotFound/>}/>
                     </Routes>

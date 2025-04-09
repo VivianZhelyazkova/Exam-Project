@@ -21,6 +21,10 @@ export default function MonsterDetails() {
         navigate("/monsters");
     }
 
+    function editMonsterHandler(){
+        navigate(`/editmonster/${id}`)
+    }
+
     return (
         <>
         
@@ -54,9 +58,9 @@ export default function MonsterDetails() {
                         <p className="details-heading">Author:</p>
                     </div>
                     <p> {monsterDetails.author}</p>
-                    { userId === monsterDetails.authorId &&
+                    { userId === monsterDetails._ownerId &&
                     <div className="monster-button-container">
-                        <button >Edit </button>
+                        <button onClick={editMonsterHandler}>Edit</button>
                         <button onClick={deleteMonsterClickHandler}>
                             Delete
                         </button>
