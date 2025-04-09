@@ -175,7 +175,6 @@ textarea {
     box-shadow: -10px 10px 30px #0e0e0e;
     border-radius: 15px;
     width: 700px;
-    height: 380px;
     padding: 80px;
     background: rgb(18, 18, 18);
     background: -moz-radial-gradient(
@@ -208,8 +207,8 @@ textarea {
 
 .form-row-container {
     display: flex;
-    align-items: center;
     margin-bottom: 45px;
+    
 }
 
 label {
@@ -282,11 +281,15 @@ label {
 }
 
 .about-us-h3 {
-    color:#c6ad30; 
+    color: #c6ad30;
 }
 
 .not-found-h1 {
-    color:#c6ad30; 
+    color: #c6ad30;
     font-size: 100px;
     font-weight: bold;
+}
+
+.contact-message {
+    height: 150px;
 }

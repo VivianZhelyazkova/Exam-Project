@@ -8,19 +8,22 @@ export default function EditMonster() {
     const { putMonster } = usePutMonster();
     const navigate = useNavigate();
     const [monster, setMonster] = useState({});
+
     useEffect(() => {
         setMonster(monsterDetails);
     }, [monsterDetails]);
-    async function onSubmitEditMonster(formData) {
-        const monsterNewDetails = Object.fromEntries(formData);
-        await putMonster(id, monsterNewDetails);
+
+    async function onSubmitEditMonster() {
+        await putMonster(id, monster);
         navigate(`/monster/${id}`);
     }
+
     function onChangeHandler(value, propName) {
         setMonster((prev) => {
             return { ...prev, [propName]: value };
         });
     }
+
     return (
         <>
             <h1>Edit Monster</h1>
@@ -34,7 +37,7 @@ export default function EditMonster() {
                         className="form-input"
                         type="text"
                         name="image"
-                        value={monster.image||""}
+                        value={monster.image || ""}
                         onChange={(e) => {
                             onChangeHandler(e.target.value, e.target.name);
                         }}
@@ -49,7 +52,7 @@ export default function EditMonster() {
                         className="form-input"
                         type="text"
                         name={"name"}
-                        value={monster.name||""}
+                        value={monster.name || ""}
                         onChange={(e) => {
                             onChangeHandler(e.target.value, e.target.name);
                         }}
@@ -63,7 +66,7 @@ export default function EditMonster() {
                     <textarea
                         className="form-input"
                         name="powers"
-                        value={monster.powers||""}
+                        value={monster.powers || ""}
                         onChange={(e) => {
                             onChangeHandler(e.target.value, e.target.name);
                         }}
@@ -77,15 +80,25 @@ export default function EditMonster() {
                     <textarea
                         className="form-input"
                         name="weaknesses"
-                        value={monster.weaknesses||""}
+                        value={monster.weaknesses || ""}
                         onChange={(e) => {
                             onChangeHandler(e.target.value, e.target.name);
                         }}
                     />
                 </div>
-                <button className="form-button" type="submit">
-                    SUBMIT
-                </button>
+                <div className="modal-buttons-container">
+                    <button className="form-button" type="submit">
+                        SUBMIT
+                    </button>
+                    <button
+                        className="form-button"
+                        onClick={() => {
+                            navigate(-1);
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </div>
             </form>
         </>
     );

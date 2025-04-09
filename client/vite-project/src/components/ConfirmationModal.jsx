@@ -3,8 +3,8 @@ export default function ConfirmationModal({
     onCancel
 }) {
     return (
-        <div className="modal-backdrop">
-            <div className="modal">
+        <div className="modal-backdrop" onClick={onCancel}>
+            <div className="modal" >
                 <h3>Are you sure you want to delete this monster?</h3>
                 <div className="modal-buttons-container">
                     <button className="modal-delete-button" onClick={onDelete}>Delete</button>

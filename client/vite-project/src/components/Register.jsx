@@ -16,7 +16,7 @@ export default function Register() {
     return (
         <>
             <h1>Register</h1>
-            <form action={onSubmit} className="column">
+            <form action={onSubmit} className={"column form-card"}>
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" />
                 <label htmlFor="name">Name</label>
