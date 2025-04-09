@@ -7,14 +7,14 @@ import logo from "../assets/logo.png";
 export default function Header() {
     const { name, isAuthenticated } = useAuth();
     const { userLogoutHandler } = useContext(UserContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     function isActiveClassName({ isActive }) {
         return isActive ? "active-link" : "link";
     }
 
-    function addMonsterClickHandler(){
-        navigate("/addmonster")
+    function addMonsterClickHandler() {
+        navigate("/addmonster");
     }
     return (
         <>
@@ -35,9 +35,6 @@ export default function Header() {
                     </NavLink>
                     {isAuthenticated ? (
                         <>
-                            <NavLink className={isActiveClassName}>
-                                Profile
-                            </NavLink>
                             <NavLink onClick={userLogoutHandler}>
                                 {" "}
                                 Logout{" "}
@@ -57,7 +54,14 @@ export default function Header() {
                         </>
                     )}
                 </div>
-                {isAuthenticated && <button onClick={addMonsterClickHandler} className="button add-monster-button">Add Monster</button>}
+                {isAuthenticated && (
+                    <button
+                        onClick={addMonsterClickHandler}
+                        className="button add-monster-button"
+                    >
+                        Add Monster
+                    </button>
+                )}
             </div>
         </>
     );
