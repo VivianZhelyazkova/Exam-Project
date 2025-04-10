@@ -1910,7 +1910,7 @@
         requestHandler(plugins, services)
     );
 
-    const port = 3030;
+    const port = process.env.PORT || 8080;
 
     server.listen(port);
 
