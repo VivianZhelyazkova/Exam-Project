@@ -65,7 +65,7 @@
     align-items: center;
     padding-bottom: 40px;
     overflow-y: hidden;
-    min-height:600px;
+    min-height: 600px;
 }
 
 .column {
@@ -316,4 +316,47 @@ label {
 .form-wrapper {
     position: relative;
     width: 860px;
+}
+
+.comment-name {
+    margin-right: 20px;
+    color: #c6ad30;
+    font-size: 20px;
+}
+
+.comments-details-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.comments-container {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #c6ad30;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.comments-column {
+    width: 100%;
+}
+
+.coments-input-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.comments-input {
+    width: 70%;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.comments-h2 {
+    color: #c6ad30;
 }

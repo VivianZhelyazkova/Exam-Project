@@ -14,6 +14,7 @@ import AuthenticatedGuard from "./routeguards/AuthenticatedGuard";
 import GuestGuard from "./routeguards/GuestGuard";
 import NotFound from "./components/NotFound";
 import EditMonster from "./components/EditMonster";
+import Logout from "./components/Logout";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                             element={<MonsterDetails />}
                         />
                         <Route element={<AuthenticatedGuard />}>
+                            <Route path="/logout" element={<Logout/>}/>
                             <Route
                                 path="/addmonster"
                                 element={<AddMonster />}

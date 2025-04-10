@@ -3,13 +3,14 @@ import { useDeleteMonster, useFetchMonsterDetails } from "../api/monstersApi";
 import ConfirmationModal from "./modals/ConfirmationModal";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import Comments from "./Comments";
 
 export default function MonsterDetails() {
     const { id } = useParams();
     const { monsterDetails } = useFetchMonsterDetails(id);
     const { deleteMonster } = useDeleteMonster();
     const navigate = useNavigate();
-    const {userId} = useAuth()
+    const { userId, isAuthenticated } = useAuth();
 
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     function deleteMonsterClickHandler() {
@@ -21,13 +22,12 @@ export default function MonsterDetails() {
         navigate("/monsters");
     }
 
-    function editMonsterHandler(){
-        navigate(`/editmonster/${id}`)
+    function editMonsterHandler() {
+        navigate(`/editmonster/${id}`);
     }
 
     return (
         <>
-        
             {deleteModalOpen && (
                 <ConfirmationModal
                     onDelete={onClickDeleteMonster}
@@ -58,15 +58,18 @@ export default function MonsterDetails() {
                         <p className="details-heading">Author:</p>
                     </div>
                     <p> {monsterDetails.author}</p>
-                    { userId === monsterDetails._ownerId &&
-                    <div className="monster-button-container">
-                        <button onClick={editMonsterHandler}>Edit</button>
-                        <button onClick={deleteMonsterClickHandler}>
-                            Delete
-                        </button>
-                    </div>}
+                    {userId === monsterDetails._ownerId && (
+                        <div className="monster-button-container">
+                            <button onClick={editMonsterHandler}>Edit</button>
+                            <button onClick={deleteMonsterClickHandler}>
+                                Delete
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
+
+           { isAuthenticated && <Comments />}
         </>
     );
 }

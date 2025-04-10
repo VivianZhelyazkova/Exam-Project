@@ -19,7 +19,13 @@ export default function Header() {
     return (
         <>
             <div className="header-container">
-                <img className="logo" onClick={()=>{navigate("/");}} src={logo}></img>
+                <img
+                    className="logo"
+                    onClick={() => {
+                        navigate("/");
+                    }}
+                    src={logo}
+                ></img>
                 <div className="nav-container">
                     <NavLink className={isActiveClassName} to="/">
                         Home
@@ -35,10 +41,7 @@ export default function Header() {
                     </NavLink>
                     {isAuthenticated ? (
                         <>
-                            <NavLink onClick={userLogoutHandler}>
-                                {" "}
-                                Logout{" "}
-                            </NavLink>
+                            <NavLink to="/logout">Logout</NavLink>
                         </>
                     ) : (
                         <>
