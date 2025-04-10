@@ -87,6 +87,7 @@ textarea {
     z-index: 1;
     cursor: pointer;
     border-radius: 15px;
+    margin-bottom: 80px;
 }
 
 .monster-image {
@@ -100,7 +101,7 @@ textarea {
 .monsters-catalog {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 1300px;
     justify-content: space-evenly;
     flex-direction: row;
 }

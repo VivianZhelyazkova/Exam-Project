@@ -11,8 +11,6 @@ export default function Catalog() {
                 {monsters.map((monster) => (
                     <Monster {...monster} key={monster._id} />
                 ))}
-                
-               
             </div>
         </>
     );
