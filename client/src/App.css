@@ -360,3 +360,7 @@ label {
 .comments-h2 {
     color: #c6ad30;
 }
+
+.comment-text {
+    max-width: 400px;
+}

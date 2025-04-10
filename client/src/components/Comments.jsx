@@ -45,8 +45,8 @@ export default function Comments() {
                             >
                                 <div className="comment-name">
                                     {comment.author.name}:
-                                </div>
-                                <div>{comment.text}</div>
+                                </div >
+                                <div className="comment-text">{comment.text}</div>
                             </div>
                             <hr />
                         </div>
